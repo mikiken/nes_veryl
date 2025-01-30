@@ -1,0 +1,6 @@
+package Consts {
+    const OP_WIDTH  : u32 = 8;
+    const ADDR_WIDTH: u32 = 16;
+
+    type Inst = logic<OP_WIDTH>;
+}

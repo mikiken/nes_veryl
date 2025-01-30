@@ -1,0 +1,270 @@
+import Consts::*;
+
+package Instructions {
+
+    /******** Transfer instructions ********/
+
+    // Load to register A
+    const LDA_Imm   : Inst = 8'hA9 as Inst;
+    const LDA_Zero  : Inst = 8'hA5 as Inst;
+    const LDA_Zero_X: Inst = 8'hB5 as Inst;
+    const LDA_Abs   : Inst = 8'hAD as Inst;
+    const LDA_Abs_X : Inst = 8'hBD as Inst;
+    const LDA_Abs_Y : Inst = 8'hB9 as Inst;
+    const LDA_Ind_X : Inst = 8'hA1 as Inst;
+    const LDA_Ind_Y : Inst = 8'hB1 as Inst;
+
+    // Load to register X
+    const LDX_Imm   : Inst = 8'hA2 as Inst;
+    const LDX_Zero  : Inst = 8'hA6 as Inst;
+    const LDX_Zero_Y: Inst = 8'hB6 as Inst;
+    const LDX_Abs   : Inst = 8'hAE as Inst;
+    const LDX_Abs_Y : Inst = 8'hBE as Inst;
+
+    // Load to register Y
+    const LDY_Imm   : Inst = 8'hA0 as Inst;
+    const LDY_Zero  : Inst = 8'hA4 as Inst;
+    const LDY_Zero_X: Inst = 8'hB4 as Inst;
+    const LDY_Abs   : Inst = 8'hAC as Inst;
+    const LDY_Abs_X : Inst = 8'hBC as Inst;
+
+    // Store from register A
+    const STA_Zero  : Inst = 8'h85 as Inst;
+    const STA_Zero_X: Inst = 8'h95 as Inst;
+    const STA_Abs   : Inst = 8'h8D as Inst;
+    const STA_Abs_X : Inst = 8'h9D as Inst;
+    const STA_Abs_Y : Inst = 8'h99 as Inst;
+    const STA_Ind_X : Inst = 8'h81 as Inst;
+    const STA_Ind_Y : Inst = 8'h91 as Inst;
+
+    // Store from register X
+    const STX_Zero  : Inst = 8'h86 as Inst;
+    const STX_Zero_Y: Inst = 8'h96 as Inst;
+    const STX_Abs   : Inst = 8'h8E as Inst;
+
+    // Store from register Y
+    const STY_Zero  : Inst = 8'h84 as Inst;
+    const STY_Zero_X: Inst = 8'h94 as Inst;
+    const STY_Abs   : Inst = 8'h8C as Inst;
+
+    // Copy between registers
+    const TAX: Inst = 8'hAA as Inst;
+    const TAY: Inst = 8'hA8 as Inst;
+    const TSX: Inst = 8'hBA as Inst;
+    const TXA: Inst = 8'h8A as Inst;
+    const TXS: Inst = 8'h9A as Inst;
+    const TYA: Inst = 8'h98 as Inst;
+
+
+    /******** Arithmetic instructions ********/
+
+    // Add A and memory with carry and store in A
+    const ADC_Imm   : Inst = 8'h69 as Inst;
+    const ADC_Zero  : Inst = 8'h65 as Inst;
+    const ADC_Zero_X: Inst = 8'h75 as Inst;
+    const ADC_Abs   : Inst = 8'h6D as Inst;
+    const ADC_Abs_X : Inst = 8'h7D as Inst;
+    const ADC_Abs_Y : Inst = 8'h79 as Inst;
+    const ADC_Ind_X : Inst = 8'h61 as Inst;
+    const ADC_Ind_Y : Inst = 8'h71 as Inst;
+
+    // Bitwise AND A with memory and store in A
+    const AND_Imm   : Inst = 8'h29 as Inst;
+    const AND_Zero  : Inst = 8'h25 as Inst;
+    const AND_Zero_X: Inst = 8'h35 as Inst;
+    const AND_Abs   : Inst = 8'h2D as Inst;
+    const AND_Abs_X : Inst = 8'h3D as Inst;
+    const AND_Abs_Y : Inst = 8'h39 as Inst;
+    const AND_Ind_X : Inst = 8'h21 as Inst;
+    const AND_Ind_Y : Inst = 8'h31 as Inst;
+
+    // Arithmetic shift left
+    const ASL_Acc   : Inst = 8'h0A as Inst;
+    const ASL_Zero  : Inst = 8'h06 as Inst;
+    const ASL_Zero_X: Inst = 8'h16 as Inst;
+    const ASL_Abs   : Inst = 8'h0E as Inst;
+    const ASL_Abs_X : Inst = 8'h1E as Inst;
+
+    // Bitwise compare operation with A and memory
+    const BIT_Zero: Inst = 8'h24 as Inst;
+    const BIT_Abs : Inst = 8'h2C as Inst;
+
+    // Compare A with memory
+    const CMP_Imm   : Inst = 8'hC9 as Inst;
+    const CMP_Zero  : Inst = 8'hC5 as Inst;
+    const CMP_Zero_X: Inst = 8'hD5 as Inst;
+    const CMP_Abs   : Inst = 8'hCD as Inst;
+    const CMP_Abs_X : Inst = 8'hDD as Inst;
+    const CMP_Abs_Y : Inst = 8'hD9 as Inst;
+    const CMP_Ind_X : Inst = 8'hC1 as Inst;
+    const CMP_Ind_Y : Inst = 8'hD1 as Inst;
+
+    // Compare X with memory
+    const CPX_Imm : Inst = 8'hE0 as Inst;
+    const CPX_Zero: Inst = 8'hE4 as Inst;
+    const CPX_Abs : Inst = 8'hEC as Inst;
+
+    // Compare Y with memory
+    const CPY_Imm : Inst = 8'hC0 as Inst;
+    const CPY_Zero: Inst = 8'hC4 as Inst;
+    const CPY_Abs : Inst = 8'hCC as Inst;
+
+    // Decrement memory
+    const DEC_Zero  : Inst = 8'hC6 as Inst;
+    const DEC_Zero_X: Inst = 8'hD6 as Inst;
+    const DEC_Abs   : Inst = 8'hCE as Inst;
+    const DEC_Abs_X : Inst = 8'hDE as Inst;
+
+    // Decrement register
+    const DEX: Inst = 8'hCA as Inst;
+    const DEY: Inst = 8'h88 as Inst;
+
+    // Bitwise EXOR A with memory and store in A
+    const EOR_Imm   : Inst = 8'h49 as Inst;
+    const EOR_Zero  : Inst = 8'h45 as Inst;
+    const EOR_Zero_X: Inst = 8'h55 as Inst;
+    const EOR_Abs   : Inst = 8'h4D as Inst;
+    const EOR_Abs_X : Inst = 8'h5D as Inst;
+    const EOR_Abs_Y : Inst = 8'h59 as Inst;
+    const EOR_Ind_X : Inst = 8'h41 as Inst;
+    const EOR_Ind_Y : Inst = 8'h51 as Inst;
+
+    // Increment memory
+    const INC_Zero  : Inst = 8'hE6 as Inst;
+    const INC_Zero_X: Inst = 8'hF6 as Inst;
+    const INC_Abs   : Inst = 8'hEE as Inst;
+    const INC_Abs_X : Inst = 8'hFE as Inst;
+
+    // Increment register
+    const INX: Inst = 8'hE8 as Inst;
+    const INY: Inst = 8'hC8 as Inst;
+
+    // Logical shift right
+    const LSR_Acc   : Inst = 8'h4A as Inst;
+    const LSR_Zero  : Inst = 8'h46 as Inst;
+    const LSR_Zero_X: Inst = 8'h56 as Inst;
+    const LSR_Abs   : Inst = 8'h4E as Inst;
+    const LSR_Abs_X : Inst = 8'h5E as Inst;
+
+    // Bitwise OR A with memory and store in A
+    const ORA_Imm   : Inst = 8'h09 as Inst;
+    const ORA_Zero  : Inst = 8'h05 as Inst;
+    const ORA_Zero_X: Inst = 8'h15 as Inst;
+    const ORA_Abs   : Inst = 8'h0D as Inst;
+    const ORA_Abs_X : Inst = 8'h1D as Inst;
+    const ORA_Abs_Y : Inst = 8'h19 as Inst;
+    const ORA_Ind_X : Inst = 8'h01 as Inst;
+    const ORA_Ind_Y : Inst = 8'h11 as Inst;
+
+    // Rotate left
+    const ROL_Acc   : Inst = 8'h2A as Inst;
+    const ROL_Zero  : Inst = 8'h26 as Inst;
+    const ROL_Zero_X: Inst = 8'h36 as Inst;
+    const ROL_Abs   : Inst = 8'h2E as Inst;
+    const ROL_Abs_X : Inst = 8'h3E as Inst;
+
+    // Rotate right
+    const ROR_Acc   : Inst = 8'h6A as Inst;
+    const ROR_Zero  : Inst = 8'h66 as Inst;
+    const ROR_Zero_X: Inst = 8'h76 as Inst;
+    const ROR_Abs   : Inst = 8'h6E as Inst;
+    const ROR_Abs_X : Inst = 8'h7E as Inst;
+
+    // Subtract memory from A with borrow and store in A
+    const SBC_Imm   : Inst = 8'hE9 as Inst;
+    const SBC_Zero  : Inst = 8'hE5 as Inst;
+    const SBC_Zero_X: Inst = 8'hF5 as Inst;
+    const SBC_Abs   : Inst = 8'hED as Inst;
+    const SBC_Abs_X : Inst = 8'hFD as Inst;
+    const SBC_Abs_Y : Inst = 8'hF9 as Inst;
+    const SBC_Ind_X : Inst = 8'hE1 as Inst;
+    const SBC_Ind_Y : Inst = 8'hF1 as Inst;
+
+
+    /******** Stack instructions ********/
+
+    // Push register to stack
+    const PHA: Inst = 8'h48 as Inst;
+    const PHP: Inst = 8'h08 as Inst;
+
+    // Pop stack to register
+    const PLA: Inst = 8'h68 as Inst;
+    const PLP: Inst = 8'h28 as Inst;
+
+
+    /******** Jump instructions ********/
+
+    // Jump to address
+    const JMP_Abs : Inst = 8'h4C as Inst;
+    const JMP_Ind : Inst = 8'h6C as Inst;
+
+    // Jump to subroutine
+    const JSR: Inst = 8'h20 as Inst;
+
+    // Return from subroutine
+    const RTS: Inst = 8'h60 as Inst;
+
+    // Return from interrupt routine
+    const RTI: Inst = 8'h40 as Inst;
+
+    /******** Branch instructions ********/
+
+    // Branch if carry flag is cleared
+    const BCC: Inst = 8'h90 as Inst;
+
+    // Branch if carry flag is set
+    const BCS: Inst = 8'hB0 as Inst;
+
+    // Branch if zero flag is set
+    const BEQ: Inst = 8'hF0 as Inst;
+
+    // Branch if negative flag is set
+    const BMI: Inst = 8'h30 as Inst;
+
+    // Branch if zero flag is cleared
+    const BNE: Inst = 8'hD0 as Inst;
+
+    // Branch if negative flag is cleared
+    const BPL: Inst = 8'h10 as Inst;
+
+    // Branch if overflow flag is cleared
+    const BVC: Inst = 8'h50 as Inst;
+
+    // Branch if overflow flag is set
+    const BVS: Inst = 8'h70 as Inst;
+
+
+    /******** Status flag instructions ********/
+
+    // Clear carry flag
+    const CLC: Inst = 8'h18 as Inst;
+
+    // Clear decimal mode flag
+    // Note: This instruction is not implemented on NES
+    const CLD: Inst = 8'hD8 as Inst;
+
+    // Clear interrupt disable flag
+    const CLI: Inst = 8'h58 as Inst;
+
+    // Clear overflow flag
+    const CLV: Inst = 8'hB8 as Inst;
+
+    // Set carry flag
+    const SEC: Inst = 8'h38 as Inst;
+
+    // Set decimal mode flag
+    // Note: This instruction is not implemented on NES
+    const SED: Inst = 8'hF8 as Inst;
+
+    // Set interrupt disable flag
+    const SEI: Inst = 8'h78 as Inst;
+
+
+    /******** Otherwise ********/
+    
+    // Breakpoint (software interrupt)
+    const BRK: Inst = 8'h00 as Inst;
+
+    // No operation
+    const NOP: Inst = 8'hEA as Inst;
+}
