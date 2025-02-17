@@ -1,0 +1,11 @@
+import Consts::*;
+
+module Cpu (
+    data       : inout  tri logic<OP_WIDTH>  ,
+    addr       : output logic    <ADDR_WIDTH>,
+    clk        : input  clock                ,
+    rst_n      : input  reset                ,
+    nmi_n      : input  logic                ,
+    irq_n      : input  logic                ,
+    read_enable: output logic                ,
+) {}
