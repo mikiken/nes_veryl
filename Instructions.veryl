@@ -195,8 +195,8 @@ package Instructions {
     /******** Jump instructions ********/
 
     // Jump to address
-    const JMP_Abs : Inst = 8'h4C as Inst;
-    const JMP_Ind : Inst = 8'h6C as Inst;
+    const JMP_Abs: Inst = 8'h4C as Inst;
+    const JMP_Ind: Inst = 8'h6C as Inst;
 
     // Jump to subroutine
     const JSR: Inst = 8'h20 as Inst;
@@ -261,7 +261,7 @@ package Instructions {
 
 
     /******** Otherwise ********/
-    
+
     // Breakpoint (software interrupt)
     const BRK: Inst = 8'h00 as Inst;
 
