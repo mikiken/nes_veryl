@@ -16,4 +16,43 @@ module Cpu (
     var sp    : logic<DATA_WIDTH>;
     var status: logic<8>         ;
     var pc    : logic<ADDR_WIDTH>;
+
+    /******** Status register flags ********/
+
+    // Set if the result of an operation is negative
+    // (asserted that this equals to acc[7])
+    function is_negative () -> logic {
+        return status[7];
+    }
+
+    // Set if the result of an operation has overflowed
+    function has_overflowed () -> logic {
+        return status[6];
+    }
+
+    // Set if break has occurred
+    function has_broken () -> logic {
+        return status[4];
+    }
+
+    // Set if the instruction is in decimal mode
+    // Note: This flag is not implemented on NES
+    function is_decimal () -> logic {
+        return status[3];
+    }
+
+    // Set if interrupt request (IRQ) is disabled
+    function is_interrupt_disabled () -> logic {
+        return status[2];
+    }
+
+    // Set if the result of an operation is zero
+    function is_zero () -> logic {
+        return status[1];
+    }
+
+    // Set if the result of an operation has carry
+    function has_carry () -> logic {
+        return status[0];
+    }
 }
