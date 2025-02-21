@@ -2,5 +2,5 @@ package Consts {
     const DATA_WIDTH: u32 = 8;
     const ADDR_WIDTH: u32 = 16;
 
-    type Inst = logic<DATA_WIDTH>;
+    type Opcode = logic<DATA_WIDTH>;
 }
