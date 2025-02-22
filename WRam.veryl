@@ -1,11 +1,14 @@
 import Consts::*;
 
 module WRam (
-    addr : output logic<ADDR_WIDTH>,
-    clk  : input  clock            ,
-    rst_n: input  reset            ,
+    data        : inout tri logic<DATA_WIDTH>,
+    addr        : input logic    <ADDR_WIDTH>,
+    clk         : input clock                ,
+    write_enable: input logic                ,
 ) {
     type MemDataType = logic<DATA_WIDTH>;
 
     var wram: MemDataType [2 ** ADDR_WIDTH];
+
+    always_ff {}
 }
