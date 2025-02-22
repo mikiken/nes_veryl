@@ -1,0 +1,11 @@
+import Consts::*;
+
+module WRam (
+    addr : output logic<ADDR_WIDTH>,
+    clk  : input  clock            ,
+    rst_n: input  reset            ,
+) {
+    type MemDataType = logic<DATA_WIDTH>;
+
+    var wram: MemDataType [2 ** ADDR_WIDTH];
+}
