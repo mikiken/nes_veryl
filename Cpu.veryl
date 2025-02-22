@@ -38,7 +38,7 @@ module Cpu (
             registers.acc                 = 8'h00;
             registers.idx_x               = 8'h00;
             registers.idx_y               = 8'h00;
-            registers.sp                  = 8'h00;
+            registers.sp                  = 8'hFD;
             registers.pc                  = 16'h0000;
             registers.status.negative     = 0;
             registers.status.overflow     = 0;
