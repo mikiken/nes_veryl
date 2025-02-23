@@ -1,4 +1,5 @@
 import Consts::*;
+import Opcodes::*;
 
 module Cpu (
     data        : inout  tri logic<DATA_WIDTH>,
@@ -49,7 +50,32 @@ module Cpu (
             registers.status.zero         = 0;
             registers.status.carry        = 0;
         } else {
-            // Instruction fetch
+            registers.pc += 1;
+
+            // var opcode: Opcode;
+            let opcode: Opcode = LDA_Imm; // TODO: Fetch opcode from memory
+
+            case opcode {
+                LDA_Imm: {
+                    let imm: logic<DATA_WIDTH> = 8'hFF; // TODO: Fetch immediate value from 
+                    registers.acc = imm;
+
+                    // If immediate value is zero, set zero flag
+                    if registers.acc == 8'h00 {
+                        registers.status.zero = 1;
+                    } else {
+                        registers.status.zero = 0;
+                    }
+
+                    // If immediate value is negative, set negative flag
+                    if registers.acc[7] == 1 {
+                        registers.status.negative = 1;
+                    } else {
+                        registers.status.negative = 0;
+                    }
+                }
+            }
+
         }
     }
 }
